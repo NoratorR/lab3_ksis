@@ -1,0 +1,12 @@
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Debug\Logic.dll.config
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Debug\Logic.dll
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Debug\Logic.pdb
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Debug\Logic.dll
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Debug\Logic.pdb
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Debug\Logic.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Debug\Logic.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Debug\Logic.dll
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Debug\Logic.pdb
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Debug\Logic.dll.config
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Debug\Logic.dll
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Debug\Logic.pdb

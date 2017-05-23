@@ -1,0 +1,6 @@
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Release\Logic.dll.config
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Release\Logic.dll
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\bin\Release\Logic.pdb
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Release\Logic.csprojResolveAssemblyReference.cache
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Release\Logic.dll
+C:\Users\admin\Desktop\уник\2_курс\2_сем\лабы\ксис\03\server\Logic\Logic\obj\Release\Logic.pdb

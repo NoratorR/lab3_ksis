@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfDepartment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Department>
+    <workerList>
+      <Jober>
+        <selfComputerList>
+          <string>flol</string>
+        </selfComputerList>
+        <workerName>flol</workerName>
+      </Jober>
+    </workerList>
+    <computerList>
+      <Computer>
+        <selfWorkerList>
+          <string>flol</string>
+        </selfWorkerList>
+        <computerName>flol</computerName>
+      </Computer>
+    </computerList>
+    <departName>post</departName>
+  </Department>
+  <Department>
+    <workerList>
+      <Jober>
+        <selfComputerList>
+          <string>2</string>
+        </selfComputerList>
+        <workerName>ivan</workerName>
+      </Jober>
+      <Jober>
+        <selfComputerList />
+        <workerName>alex</workerName>
+      </Jober>
+    </workerList>
+    <computerList>
+      <Computer>
+        <selfWorkerList>
+          <string>ivan</string>
+        </selfWorkerList>
+        <computerName>2</computerName>
+      </Computer>
+    </computerList>
+    <departName>finanse</departName>
+  </Department>
+</ArrayOfDepartment>
