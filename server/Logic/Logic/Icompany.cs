@@ -17,10 +17,14 @@ namespace Logic
     {
         [OperationContract] 
         List<Department> GetAllRecords();
+       
 
         [OperationContract]
         List<Department> StartConnection();
+
         [OperationContract]
         void SaveRecords();
+      
+
     }
 }

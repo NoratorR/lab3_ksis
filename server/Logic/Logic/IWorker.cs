@@ -16,11 +16,13 @@ namespace Logic
     public interface IWorker
     {
         [OperationContract]
-        bool AddComputer(string DepartName, string ComputerName, string WorkerName);
+        void AddComputer(int WorkerID,Computer cmp,int DepartmentID );
         [OperationContract]
-        bool ChangeComputer(string DepartName, string ComputerName, string newComputerName, string WorkerName);
+        void ChangeWorker(Jober jbr,int DepartmentID);
         [OperationContract]
-        bool DeleteComputer(string DepartName, string ComputerName, string WorkerName);
+        void DeleteWorker(int WorkerID,int DepartmentID);
+        [OperationContract]
+        void CreateWorker(Jober jbr, int DepartmentID);
        
     }
 }

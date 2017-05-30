@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
-namespace Custom_logic
+namespace Custom_Logic
 {
-    class Program
+  
+    public class Response : ICommand
     {
-        static void Main(string[] args)
-        {
-        }
+        public List<Department> data;
     }
 }

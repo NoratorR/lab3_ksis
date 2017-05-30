@@ -10,53 +10,41 @@ namespace Logic
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "Worker" в коде и файле конфигурации.
     public class Worker : IWorker
     {
-       
-
-        public bool AddComputer(string DepartName, string ComputerName, string WorkerName)
+        public void AddComputer(int WorkerID, Computer cmp, int DepartmentID)
         {
-          
-            var index = Company.depart.FindIndex(p => p.departName == DepartName);
-            List<Jober> lst = Company.depart[index].workerList;
-            var i = lst.FindIndex(p => p.workerName == WorkerName);
-            lst[i].selfComputerList.Add(ComputerName);
-           
-            
-            List<Computer> cst = Company.depart[index].computerList;
-            i = cst.FindIndex(p => p.computerName == ComputerName);
-            cst[i].selfWorkerList.Add(WorkerName);
-            return true;
+            var index = Company.depart.FindIndex(p => p.DepartmentID == DepartmentID);
+            var i =  Company.depart[index].workerList.FindIndex(p => p.JoberID == WorkerID);
+            Company.depart[index].workerList[i].selfComputerList.Add(cmp.computerName);
+
+            string temp = Company.depart[index].workerList[i].workerName;
+
+            i = Company.depart[index].computerList.FindIndex(p => p.computerID == cmp.computerID);
+            Company.depart[index].computerList[i].selfWorkerList.Add(temp);
+        
+
+
+    }
+
+        public void ChangeWorker(Jober jbr, int DepartmentID)
+        {
+            var index = Company.depart.FindIndex(p => p.DepartmentID == DepartmentID);
+            var i = Company.depart[index].workerList.FindIndex(p => p.JoberID == jbr.JoberID);
+            Company.depart[index].workerList[i].workerName = jbr.workerName;
+
         }
 
-        public bool ChangeComputer(string DepartName, string ComputerName, string newComputerName, string WorkerName)
+        public void CreateWorker(Jober jbr, int DepartmentID)
         {
-            var index = Company.depart.FindIndex(p => p.departName == DepartName);
-            List<Jober> lst = Company.depart[index].workerList;
-            var i = lst.FindIndex(p => p.workerName == WorkerName);
-            var j = lst[i].selfComputerList.FindIndex(p => p == ComputerName);
-            lst[i].selfComputerList[j] = newComputerName;
+            var index = Company.depart.FindIndex(p => p.DepartmentID == DepartmentID);
+            Company.depart[index].workerList.Add(jbr);
 
-            List<Computer> clt = Company.depart[index].computerList;
-            i = clt.FindIndex(p => p.computerName == ComputerName);
-            clt[i].computerName = newComputerName;
-
-            return true;
         }
 
-        public bool DeleteComputer(string DepartName, string ComputerName ,string WorkerName)
+        public void DeleteWorker(int WorkerID, int DepartmentID)
         {
-            var index = Company.depart.FindIndex(p => p.departName == DepartName);
-            List<Computer> lst = Company.depart[index].computerList;
-            var i = lst.FindIndex(p => p.computerName == ComputerName);
-            var j = lst[i].selfWorkerList.FindIndex(p => p == WorkerName);
-            lst[index].selfWorkerList.RemoveAt(j);
-
-            List<Jober> cst = Company.depart[index].workerList;
-            i = cst.FindIndex(p => p.workerName == WorkerName);
-            j = cst[i].selfComputerList.FindIndex(p => p == ComputerName);
-            cst[index].selfComputerList.RemoveAt(j);
-            return true;
+            var index = Company.depart.FindIndex(p => p.DepartmentID == DepartmentID);
+            var i = Company.depart[index].workerList.FindIndex(p => p.JoberID == WorkerID);
+            Company.depart[index].workerList.RemoveAt(i);
         }
-
-       
     }
 }

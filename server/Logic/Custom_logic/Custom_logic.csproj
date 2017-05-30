@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{56C49FC2-9DAF-4A07-A79E-733C63A5CC4D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{24B46895-D528-4099-B2FC-06C01BA3A969}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Custom_logic</RootNamespace>
-    <AssemblyName>Custom_logic</AssemblyName>
+    <RootNamespace>Custom_Logic</RootNamespace>
+    <AssemblyName>Custom_Logic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,11 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="Community.cs" />
+    <Compile Include="Departament.cs" />
+    <Compile Include="Handlers.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="Icompany.cs" />
+    <Compile Include="IDepartament.cs" />
+    <Compile Include="IPC.cs" />
+    <Compile Include="IWorker.cs" />
+    <Compile Include="Offise.cs" />
+    <Compile Include="PC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <Compile Include="Response.cs" />
+    <Compile Include="Serializer.cs" />
+    <Compile Include="SetHandler.cs" />
+    <Compile Include="TCPServer.cs" />
+    <Compile Include="Worker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

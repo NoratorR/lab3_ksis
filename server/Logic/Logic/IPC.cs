@@ -16,10 +16,12 @@ namespace Logic
     public interface IPC
     {
         [OperationContract]
-        bool AddWorker(string DepartName, string ComputerName, string WorkerName);
+        void AddWorker(int ComputerID,Jober wrk,int DepartmentID);
         [OperationContract]
-        bool ChangeWorker(string DepartName, string ComputerName, string newWorkerName, string WorkerName);
+        void ChangeComputer(Computer cmp, int DepartID);
         [OperationContract]
-        bool DeleteWorker(string DepartName, string ComputerName, string WorkerName);
+        void DeleteWorker(int ComputerId, int DepartmentID);
+        [OperationContract]
+        void CreateComputer(Computer cmp,int DepartmentID);
     }
 }

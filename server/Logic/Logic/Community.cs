@@ -28,7 +28,10 @@ namespace Logic
         public List<Computer> computerList = new List<Computer>();
         [DataMember]
 
-        public string departName; 
+        public string departName;
+        [DataMember]
+
+        public int DepartmentID;
         
 
     }
@@ -41,6 +44,8 @@ namespace Logic
         [DataMember]
       
         public string workerName;
+        [DataMember]
+        public int JoberID;
 
     }
     [DataContract]
@@ -52,6 +57,8 @@ namespace Logic
         [DataMember]
    
         public string computerName;
+
+        public int computerID;
 
     }
 

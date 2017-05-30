@@ -15,15 +15,13 @@ namespace Logic
     [ServiceKnownType(typeof(Computer))]
     public interface IDepartament
     {
-        [OperationContract]
-        bool AddDepartment(string DepartName);
-        [OperationContract]
-        bool DeleteDepartment(string DepartName);
-        [OperationContract]
-        bool ChangeDepartment(string DepartName, string newDepartName);
-        [OperationContract]
-        bool CreateEssense(string essense, string DepartName, string name);
 
+        [OperationContract]
+        void DeleteDepartment(Department dep);
+        [OperationContract]
+        void ChangeDepartment(Department dep);
+        [OperationContract]
+        void  CreateDepartment(Department dep);
 
 
     }

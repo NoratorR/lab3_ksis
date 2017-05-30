@@ -10,48 +10,25 @@ namespace Logic
     // ПРИМЕЧАНИЕ. Команду "Переименовать" в меню "Рефакторинг" можно использовать для одновременного изменения имени класса "ServiceLogic" в коде и файле конфигурации.
     public class Departament : IDepartament
     {
-        public bool AddDepartment(string DepartName)
+        public void CreateDepartment(Department dep)
         {
-            Department departm = new Department();
-            departm.departName = DepartName;
-            Company.depart.Add(departm);
-
-            return true;
+            Company.depart.Add(dep);
         }
 
-        public bool ChangeDepartment(string DepartName, string newDepartName)
+        public void ChangeDepartment(Department dep)
         {
-            var index = Company.depart.FindIndex(p => p.departName == DepartName);
-            Company.depart[index].departName = newDepartName;
-            return true;
+            var index = Company.depart.FindIndex(p => p.DepartmentID == dep.DepartmentID);
+            Company.depart[index].departName = dep.departName;
+           
         }
 
-        public bool CreateEssense(string Essense, string DepartName, string name)
+      
+
+        public void DeleteDepartment(Department dep)
         {
-            if (Essense == "Computer")
-            {
-                Computer computer = new Computer();
-                computer.computerName = name;
-                var index = Company.depart.FindIndex(p => p.departName == DepartName);
-                Company.depart[index].computerList.Add(computer);
-            }
-            else
-            {
-                Jober worker = new Jober();
-                worker.workerName = name;
-                var index = Company.depart.FindIndex(p => p.departName == DepartName);
-                Company.depart[index].workerList.Add(worker);
-            }
-
-            return true;
-
-        }
-
-        public bool DeleteDepartment(string DepartName)
-        {
-            var index = Company.depart.FindIndex(p => p.departName == DepartName);
+            var index = Company.depart.FindIndex(p => p.DepartmentID == dep.DepartmentID);
             Company.depart.RemoveAt(index);
-            return true;
+
         }
     }
 }

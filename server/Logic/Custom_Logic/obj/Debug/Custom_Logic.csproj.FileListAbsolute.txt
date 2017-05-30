@@ -1,0 +1,5 @@
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Custom_Logic\bin\Debug\Custom_Logic.dll
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Custom_Logic\bin\Debug\Custom_Logic.pdb
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Custom_Logic\obj\Debug\Custom_Logic.dll
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Custom_Logic\obj\Debug\Custom_Logic.pdb
+C:\Users\admin\Desktop\univer\2_курс\2_сем\лабы\ксис\03\server\Logic\Custom_Logic\obj\Debug\Custom_Logic.csprojResolveAssemblyReference.cache

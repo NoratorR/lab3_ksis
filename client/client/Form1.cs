@@ -24,9 +24,12 @@ namespace client
         private IDepartament deparment;
         private List<Department> departList;
         private bool isConnect;
-        private string curDepName;
+        private Department curDep;
         private string curWorkerStr;
         private string curComputerStr;
+        private int DepID;
+        private int CompID;
+        private int WorkID;
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +44,7 @@ namespace client
             comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            DepID = CompID = WorkID = 0;
 
 
         }
@@ -53,7 +57,7 @@ namespace client
             try {
 
                 connect = new connection();
-               
+       
                 compamy = connect.CreateCompanyChannel();
                 deparment = connect.CreateDeparmentChannel();
                 worker = connect.CreateWorkerChannel();
@@ -61,6 +65,7 @@ namespace client
                 departList = compamy.StartConnection();
                 if (departList.Count > 0)
                 {
+                    GetID();
                     UppdateDepartment();
                     UppdateComputer();
                     UppdateWorker();
@@ -91,19 +96,23 @@ namespace client
                 return;
             if (curType == typeof(Jober))
             {
-                worker.DeleteComputer(curDepName, curComputerStr, curWorkerStr);
+                var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
+                Jober jbr = departList[index].workerList.Find(p => p.workerName == curWorkerStr);
+                worker.DeleteWorker(jbr.JoberID,curDep.DepartmentID);
                 UppdateWorker();
                 UppdateComputer();
             }
             if (curType == typeof(Computer))
             {
-                pc.DeleteWorker(curDepName,curComputerStr,curWorkerStr);
+                var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
+                Computer cmp = departList[index].computerList.Find(p => p.computerName == curComputerStr);
+                pc.DeleteWorker(cmp.computerID,curDep.DepartmentID);
                 UppdateWorker();
                 UppdateComputer();
             }
             if (curType == typeof(Department))
             {
-                deparment.DeleteDepartment(curDepName);
+                deparment.DeleteDepartment(curDep);
                 UppdateDepartment();
                 if (comboBox1.Text == "")
                 {
@@ -114,7 +123,7 @@ namespace client
                   
                 UppdateComputer();
                 UppdateWorker();
-                comboBox1.Text = curDepName;
+                comboBox1.Text = curDep.departName;
             }
         }
 
@@ -144,20 +153,31 @@ namespace client
                 return;
             if (curType == typeof(Department))
             {
-                deparment.AddDepartment(textBox2.Text);
+                Department dep = new Department();
+                dep.departName = textBox2.Text;
+                dep.DepartmentID = DepID;
+                deparment.CreateDepartment(dep);
+                DepID++;
                 UppdateDepartment();
-                comboBox1.Text = curDepName;
+                comboBox1.Text = curDep.departName;
             }
             else
             {
                 if (curType == typeof(Jober))
                 {
-                    deparment.CreateEssense("Worker", curDepName, textBox2.Text);
+                    Jober jbr = new Jober();
+                    jbr.JoberID = WorkID;
+                    jbr.workerName = textBox2.Text;
+                    worker.CreateWorker(jbr,curDep.DepartmentID);
+                    WorkID++;
                     UppdateWorker();
                 }
                 if (curType == typeof(Computer))
                 {
-                    deparment.CreateEssense("Computer", curDepName, textBox2.Text);
+                    Computer cmp = new Computer();
+                    cmp.computerID = CompID;
+                    cmp.computerName = textBox2.Text;
+                    pc.CreateComputer(cmp, curDep.DepartmentID);
                     UppdateComputer();
                 }
             }
@@ -182,7 +202,7 @@ namespace client
             foreach (Department dep in departList)
             {
                 comboBox1.Items.Add(dep.departName);
-                curDepName = dep.departName;
+                curDep = dep;
               
                 makeComboList();
             }
@@ -194,7 +214,7 @@ namespace client
             dataGridView1.Rows.Clear();
             dataGridView1.Rows.Add("Worker", "Computers");
             departList = compamy.GetAllRecords();
-            var index = departList.FindIndex(p => p.departName == curDepName);
+            var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
             string worker, computer = "";
             foreach (Jober wrk in departList[index].workerList)
             {
@@ -211,7 +231,7 @@ namespace client
             dataGridView2.Rows.Clear();
             dataGridView2.Rows.Add("Computer", "Workers");
             departList = compamy.GetAllRecords();
-            var index = departList.FindIndex(p => p.departName == curDepName);
+            var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
             string worker = "", computer;
             foreach (Computer cmp in departList[index].computerList)
             {
@@ -229,7 +249,7 @@ namespace client
         {
             if (comboBox1.Text == "")
                 return;
-            curDepName = comboBox1.Text;
+            curDep = departList.Find(p => p.departName == comboBox1.Text);
             UppdateComputer();
             UppdateWorker();
 
@@ -240,11 +260,15 @@ namespace client
             if (comboBox1.Text == "")
                 return;
             if(curType == typeof(Jober))
-            {
+            { 
 
                 if (String.IsNullOrEmpty(curWorkerStr) && String.IsNullOrEmpty(curComputerStr))
                     return;
-                worker.AddComputer(curDepName,curComputerStr,curWorkerStr);
+
+                var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
+                Jober jbr = departList[index].workerList.Find(p => p.workerName == curWorkerStr);
+                Computer cmp = departList[index].computerList.Find(p => p.computerName == curComputerStr);
+                worker.AddComputer(jbr.JoberID, cmp, curDep.DepartmentID);
                 UppdateWorker();
                 UppdateComputer();
             }
@@ -252,19 +276,22 @@ namespace client
             {
 
                 if (String.IsNullOrEmpty(curWorkerStr) && String.IsNullOrEmpty(curComputerStr))
-                    return;
-                pc.AddWorker(curDepName,curComputerStr,curWorkerStr);
+                     return;
+                var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
+                Jober jbr = departList[index].workerList.Find(p => p.workerName == curWorkerStr);
+                Computer cmp = departList[index].computerList.Find(p => p.computerName == curComputerStr);
+                pc.AddWorker(cmp.computerID,jbr,curDep.DepartmentID);
                 UppdateWorker();
                 UppdateComputer();
             }
-
+             
 
         }
 
         private void makeComboList()
         {
             comboBox2.Items.Clear(); comboBox3.Items.Clear();
-            var index = departList.FindIndex(p => p.departName == curDepName);
+            var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
             foreach (Jober work in departList[index].workerList)
             {
                 comboBox2.Items.Add(work.workerName);
@@ -300,22 +327,43 @@ namespace client
                 return;
             if (curType == typeof(Jober))
             {
-                worker.ChangeComputer(curDepName, curComputerStr,textBox2.Text ,curWorkerStr);
+                var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
+                Jober jbr = departList[index].workerList.Find(p => p.workerName == curWorkerStr);
+                jbr.workerName = textBox2.Text;
+                worker.ChangeWorker(jbr ,curDep.DepartmentID);
                 UppdateWorker();
                 UppdateComputer();
             }
             if (curType == typeof(Computer))
             {
-                pc.ChangeWorker(curDepName, curComputerStr, textBox2.Text,curWorkerStr);
+                var index = departList.FindIndex(p => p.DepartmentID == curDep.DepartmentID);
+                Computer cmp = departList[index].computerList.Find(p => p.computerName == curComputerStr);
+                cmp.computerName = textBox2.Text;
+                pc.ChangeComputer(cmp, curDep.DepartmentID);
                 UppdateWorker();
                 UppdateComputer();
             }
             if (curType == typeof(Department))
             {
-               
-                deparment.ChangeDepartment(curDepName,textBox2.Text);
+                Department dep = departList.Find(p => p.DepartmentID == curDep.DepartmentID);
+                dep.departName = textBox2.Text;
+                dep.DepartmentID = curDep.DepartmentID;
+                deparment.ChangeDepartment(dep);
                 UppdateDepartment();
-                comboBox1.Text = curDepName;
+                comboBox1.Text = curDep.departName;
+            }
+        }
+
+        private void GetID()
+        {
+            foreach(Department dep in departList)
+            {
+                DepID++;
+                foreach (Jober jbr in dep.workerList)
+                    WorkID++;
+                foreach (Computer cmp in dep.computerList)
+                    CompID++;
+
             }
         }
 

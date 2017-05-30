@@ -3,64 +3,38 @@
   <Department>
     <workerList>
       <Jober>
+        <selfComputerList />
+        <workerName>liashkov</workerName>
+        <JoberID>0</JoberID>
+      </Jober>
+      <Jober>
         <selfComputerList>
           <string>admin</string>
         </selfComputerList>
-        <workerName>ivan</workerName>
-      </Jober>
-      <Jober>
-        <selfComputerList />
-        <workerName>petrov</workerName>
+        <workerName>lheinz</workerName>
+        <JoberID>1</JoberID>
       </Jober>
     </workerList>
     <computerList>
       <Computer>
-        <selfWorkerList>
-          <string>ivan</string>
-        </selfWorkerList>
+        <selfWorkerList />
         <computerName>admin</computerName>
+        <computerID>0</computerID>
       </Computer>
     </computerList>
     <departName>post</departName>
+    <DepartmentID>0</DepartmentID>
   </Department>
   <Department>
     <workerList>
       <Jober>
-        <selfComputerList>
-          <string>1</string>
-          <string>2</string>
-        </selfComputerList>
-        <workerName>alex</workerName>
-      </Jober>
-      <Jober>
-        <selfComputerList>
-          <string>1</string>
-        </selfComputerList>
-        <workerName>bob</workerName>
-      </Jober>
-      <Jober>
-        <selfComputerList>
-          <string>1</string>
-        </selfComputerList>
-        <workerName>jonh</workerName>
+        <selfComputerList />
+        <workerName>saklx</workerName>
+        <JoberID>2</JoberID>
       </Jober>
     </workerList>
-    <computerList>
-      <Computer>
-        <selfWorkerList>
-          <string>jonh</string>
-          <string>bob</string>
-          <string>alex</string>
-        </selfWorkerList>
-        <computerName>1</computerName>
-      </Computer>
-      <Computer>
-        <selfWorkerList>
-          <string>alex</string>
-        </selfWorkerList>
-        <computerName>2</computerName>
-      </Computer>
-    </computerList>
-    <departName>offise</departName>
+    <computerList />
+    <departName>office</departName>
+    <DepartmentID>1</DepartmentID>
   </Department>
 </ArrayOfDepartment>

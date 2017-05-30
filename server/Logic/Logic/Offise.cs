@@ -46,7 +46,10 @@ namespace Logic
             XmlSerializer xml = new XmlSerializer(typeof(List<Department>));
             StringWriter stringWriter = new StringWriter();
             xml.Serialize(stringWriter, Company.depart);
-            File.WriteAllText("save.xml",stringWriter.ToString());
+            File.WriteAllText("saveData.xml",stringWriter.ToString());
         }
+
+
+    
     }
 }
